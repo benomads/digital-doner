@@ -1,2 +1,2 @@
 # digital-doner
-Spring Framework application
+Spring Framework  Web-application
