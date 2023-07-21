@@ -58,6 +58,14 @@ public class DesignDonerController {
         return "design";
     }
 
+    @PostMapping("")
+    public String processDoner(Doner doner,
+                               @ModelAttribute DonerOrder donerOrder) {
+        donerOrder.addDoner(doner);
+        log.info("Processing doner: {}", doner);
+        return "redirect:/orders/current";
+    }
+
     private Iterable<Ingredient> filterByType(
             List<Ingredient> ingredients, Type type) {
         return ingredients

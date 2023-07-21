@@ -1,8 +1,11 @@
 package doners;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class DonerOrder {
     private String deliveryName;
     private String deliveryStreet;
@@ -18,4 +21,6 @@ public class DonerOrder {
     public void addDoner(Doner doner) {
         this.doners.add(doner);
     }
+
+
 }
