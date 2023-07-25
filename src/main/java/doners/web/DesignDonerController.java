@@ -1,11 +1,12 @@
 package doners.web;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import doners.DonerOrder;
+import doners.data.IngredientRepository;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -26,24 +27,21 @@ import doners.Doner;
 @SessionAttributes("donerOrder")
 public class DesignDonerController {
 
+    private final IngredientRepository ingredientRepository;
+
+    @Autowired
+    public DesignDonerController(IngredientRepository ingredientRepository) {
+        this.ingredientRepository = ingredientRepository;
+    }
+
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("BEME", "Beef Meat", Type.PROTEIN),
-                new Ingredient("CHFI", "Chicken Fillet", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("CUBR", "Cucumbers", Type.VEGGIES),
-                new Ingredient("CHED", "Cheddar", Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("KTUP", "Ketchup", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE));
+        Iterable<Ingredient> ingredients = ingredientRepository.findAll();
 
         Type[] types = Ingredient.Type.values();
         for (Type type : types) {
             model.addAttribute(type.toString().toLowerCase(),
-            filterByType(ingredients, type));
+            filterByType((List<Ingredient>) ingredients, type));
         }
     }
 
