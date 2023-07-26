@@ -2,6 +2,7 @@ package doners.data;
 
 import doners.Doner;
 import doners.DonerOrder;
+import doners.Ingredient;
 import doners.IngredientRef;
 import org.springframework.asm.Type;
 import org.springframework.jdbc.core.JdbcOperations;
@@ -19,7 +20,7 @@ import java.util.List;
 
 @Repository
 public class JdbcOrderRepository implements OrderRepository {
-    private JdbcOperations jdbcOperations;
+    private final JdbcOperations jdbcOperations;
 
     public JdbcOrderRepository(JdbcOperations jdbcOperations) {
         this.jdbcOperations = jdbcOperations;
@@ -91,7 +92,7 @@ public class JdbcOrderRepository implements OrderRepository {
         jdbcOperations.update(psc, keyHolder);
         long donerId = keyHolder.getKey().longValue();
         doner.setId(donerId);
-        saveIngredientRefs(donerId, doner.getIngredients());
+     //  saveIngredientRefs(donerId, doner.getIngredients()); //TODO - I dont understand here((((
         return donerId;
     }
 
@@ -106,4 +107,6 @@ public class JdbcOrderRepository implements OrderRepository {
                     ingredientRef.getIngredient(), donerId, key++);
         }
     }
+
+
 }
