@@ -1,37 +1,35 @@
 CREATE TABLE IF NOT EXISTS Doner_Order (
-    id INT GENERATED ALWAYS AS IDENTITY,
-    delivery_Name varchar(50) not null,
-    delivery_Street varchar(50) not null,
-    delivery_City varchar(50) not null,
-    delivery_State varchar(2) not null,
-    delivery_Zip varchar(10) not null,
-    cc_number varchar(16) not null,
-    cc_expiration varchar(5) not null,
-    cc_cvv varchar(3) not null,
-    placed_at timestamp not null
+                                           id SERIAL PRIMARY KEY,
+                                           delivery_Name VARCHAR(50) NOT NULL,
+                                           delivery_Street VARCHAR(50) NOT NULL,
+                                           delivery_City VARCHAR(50) NOT NULL,
+                                           delivery_State VARCHAR(2) NOT NULL,
+                                           delivery_Zip VARCHAR(10) NOT NULL,
+                                           cc_number VARCHAR(16) NOT NULL,
+                                           cc_expiration VARCHAR(5) NOT NULL,
+                                           cc_cvv VARCHAR(3) NOT NULL,
+                                           placed_at TIMESTAMP NOT NULL
 );
 
-create table if not exists Doner (
-      id INT GENERATED ALWAYS AS IDENTITY,
-     name varchar(50) not null,
-     doner_order bigint not null,
-     doner_order_key bigint not null,
-     created_at timestamp not null
+CREATE TABLE IF NOT EXISTS Doner (
+                                     id SERIAL PRIMARY KEY,
+                                     name VARCHAR(50) NOT NULL,
+                                     doner_order BIGINT NOT NULL,
+                                     created_at TIMESTAMP NOT NULL,
+                                     FOREIGN KEY (doner_order) REFERENCES Doner_Order(id)
 );
 
-create table if not exists Ingredient_Ref (
-    ingredient varchar(4) not null,
-    doner bigint not null,
-    doner_key bigint not null
+CREATE TABLE IF NOT EXISTS Ingredient_Ref (
+                                              ingredient VARCHAR(4) NOT NULL,
+                                              doner BIGINT NOT NULL,
+                                              doner_key BIGINT NOT NULL,
+                                              FOREIGN KEY (doner) REFERENCES Doner(id)
 );
 
-create table if not exists Ingredient (
-     id varchar(4) not null,
-     name varchar(25) not null,
-     type varchar(10) not null
-);
 
-alter table Doner
-    add foreign key (doner_order) references Doner_Order(id);
-alter table Ingredient_Ref
-    add foreign key (ingredient) references Ingredient(id);
+CREATE TABLE IF NOT EXISTS Ingredient (
+                                          id VARCHAR(4) NOT NULL,
+                                          name VARCHAR(25) NOT NULL,
+                                          type VARCHAR(10) NOT NULL,
+                                          PRIMARY KEY (id)
+);
