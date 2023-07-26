@@ -17,7 +17,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/orders")
 @SessionAttributes("donerOrder")
 public class OrderController {
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
     public OrderController(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;

@@ -5,17 +5,26 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
+@Table
 public class DonerOrder implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
+
+    @Id
     private Long id;
+
     private Date placedAt;
 
     @NotBlank(message = "Delivery name is required")
@@ -36,7 +45,7 @@ public class DonerOrder implements Serializable {
     @CreditCardNumber(message = "Not a valid Credit Card number")
     private String ccNumber;
 
-    @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([2-9][0-9])$", message="Must be formatted MM/YY")
+    @Pattern(regexp="^(0[1-9]|1[0-2])([\"|/])([2-9][0-9])$", message="Must be formatted MM/YY")
     private String ccExpiration;
 
     @Digits(integer = 3, fraction = 0, message = "Invalid CVV")
