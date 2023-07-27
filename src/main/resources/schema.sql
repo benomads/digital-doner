@@ -14,10 +14,8 @@ CREATE TABLE IF NOT EXISTS Doner_Order (
 CREATE TABLE IF NOT EXISTS Doner (
                                      id SERIAL PRIMARY KEY,
                                      name VARCHAR(50) NOT NULL,
-
                                      doner_order_key BIGINT NOT NULL,
-                                     created_at TIMESTAMP NOT NULL,
-                                     FOREIGN KEY (doner_order) REFERENCES Doner_Order(id)
+                                     created_at TIMESTAMP NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Ingredient_Ref (

@@ -1,9 +1,3 @@
-DELETE FROM Ingredient_Ref;
-DELETE FROM Doner;
-DELETE FROM Doner_Order;
-DELETE FROM Ingredient;
-
-
 
 INSERT INTO Ingredient (id, name, type) VALUES ('FLTO', 'Flour Tortilla', 'WRAP');
 INSERT INTO Ingredient (id, name, type) VALUES ('COTO', 'Corn Tortilla', 'WRAP');
