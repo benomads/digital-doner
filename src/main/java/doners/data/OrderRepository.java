@@ -1,6 +1,6 @@
 package doners.data;
 
-import doners.DonerOrder;
+import doners.entity.DonerOrder;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

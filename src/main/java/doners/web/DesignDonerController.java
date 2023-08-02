@@ -3,7 +3,7 @@ package doners.web;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import doners.DonerOrder;
+import doners.entity.DonerOrder;
 import doners.data.IngredientRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.extern.slf4j.Slf4j;
-import doners.Ingredient;
-import doners.Ingredient.Type;
-import doners.Doner;
+import doners.entity.Ingredient;
+import doners.entity.Ingredient.Type;
+import doners.entity.Doner;
 
 @Slf4j
 @Controller

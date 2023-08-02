@@ -1,4 +1,4 @@
-package doners;
+package doners.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

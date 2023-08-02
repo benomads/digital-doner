@@ -1,6 +1,6 @@
 package doners.web;
 
-import doners.DonerOrder;
+import doners.entity.DonerOrder;
 import doners.data.OrderRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

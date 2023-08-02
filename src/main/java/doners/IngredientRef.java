@@ -1,5 +1,6 @@
 package doners;
 
+import doners.entity.Ingredient;
 import jakarta.persistence.*;
 import lombok.Data;
 
