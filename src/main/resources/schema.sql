@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS Doner_Order (
 CREATE TABLE IF NOT EXISTS Doner (
                                      id SERIAL PRIMARY KEY,
                                      name VARCHAR(50) NOT NULL,
-                                     doner_order_key BIGINT NOT NULL,
                                      created_at TIMESTAMP NOT NULL
 );
 
