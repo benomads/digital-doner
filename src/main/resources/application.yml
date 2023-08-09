@@ -20,6 +20,6 @@ spring:
             scope:
               - email
               - public-profile
-
-
-
+  data:
+    rest:
+      base-path: /data-api
