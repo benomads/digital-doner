@@ -32,4 +32,16 @@ CREATE TABLE IF NOT EXISTS Ingredient (
                                           PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS "User" (
+    id SERIAL PRIMARY KEY,
+    username varchar(25) NOT NULL,
+    password varchar(25) NOT NULL,
+    fullname varchar(60) NOT NULL,
+    street varchar(50) NOT NULL,
+    city varchar(50) NOT NULL,
+    state varchar(2) NOT NULL,
+    zip varchar(10) NOT NULL,
+    phone_number varchar(25) NOT NULL
+);
+
 

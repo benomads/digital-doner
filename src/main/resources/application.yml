@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: qwerty
+  jpa:
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 215424611487993
+            client-secret: c70ccfa7fc06afd40fdc12b993761698
+            scope: email, public-profile
+          google:
+            client-id: 977993124382-gq5hl3mauava0nsd0j48proak1d9qim3.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - public-profile
+
+
+

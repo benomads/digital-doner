@@ -7,7 +7,6 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import org.hibernate.validator.constraints.CreditCardNumber;
 
-
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -52,6 +51,9 @@ public class DonerOrder implements Serializable {
     @Digits(integer = 3, message = "Invalid CVV", fraction = 0)
     @Column(name = "cc_cvv", nullable = false)
     private String ccCVV;
+
+    @ManyToOne
+    private User user;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Doner> doners = new ArrayList<>();

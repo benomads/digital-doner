@@ -4,23 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serial;
 import java.util.Arrays;
 import java.util.Collection;
 
 @Data
-@Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
+@Entity(name = "\"User\"")
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 public class User implements UserDetails {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -35,6 +34,7 @@ public class User implements UserDetails {
     private final String state;
     private final String zip;
     private final String phoneNumber;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

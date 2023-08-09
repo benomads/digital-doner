@@ -6,6 +6,9 @@ import doners.data.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import org.springframework.http.HttpMethod;
+
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -36,10 +39,17 @@ public class SecurityConfig {
             .authorizeRequests()
                  .requestMatchers("/design", "/orders").hasRole("USER")
                  .requestMatchers("/", "/**").permitAll()
+                 .requestMatchers(HttpMethod.POST, "/admin/**")
+                 .access("hasRole('ADMIN')")
                  .and()
             .formLogin()
                  .loginPage("/login")
-                 .defaultSuccessUrl("/design");
+                 .defaultSuccessUrl("/design")
+                 .and()
+            .oauth2Login()
+                 .loginPage("/login")
+                 .and()
+            .logout();
 
         return http.build();
     }
