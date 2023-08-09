@@ -1,4 +1,4 @@
-package doners.web;
+package doners.web.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;

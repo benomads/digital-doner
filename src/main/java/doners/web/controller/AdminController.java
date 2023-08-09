@@ -1,4 +1,4 @@
-package doners.web;
+package doners.web.controller;
 
 import doners.data.OrderAdminService;
 import org.springframework.security.access.prepost.PreAuthorize;

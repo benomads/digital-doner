@@ -1,4 +1,4 @@
-package doners;
+package doners.entity;
 
 import doners.entity.Ingredient;
 import jakarta.persistence.*;

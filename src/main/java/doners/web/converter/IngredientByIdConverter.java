@@ -1,4 +1,4 @@
-package doners.web;
+package doners.web.converter;
 
 import doners.data.IngredientRepository;
 

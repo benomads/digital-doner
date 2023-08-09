@@ -1,4 +1,4 @@
-package doners.web;
+package doners.web.controller;
 
 import doners.data.UserRepository;
 import doners.entity.DonerOrder;
